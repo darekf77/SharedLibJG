@@ -27,5 +27,12 @@ namespace SharedLibJG.Helpers
             return (int)(_defaultDPI * (float)fontsize / dpi);
         }
 
+
+        public static long UnixTimeNow()
+        {
+            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            return (long)timeSpan.TotalMilliseconds;
+        }
+
     }
 }
