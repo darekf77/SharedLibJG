@@ -34,5 +34,27 @@ namespace SharedLibJG.Helpers
             return (long)timeSpan.TotalMilliseconds;
         }
 
+        public static int mostPopular(int[] numbers)
+        {
+            var counts = new Dictionary<int, int>();
+            foreach (int number in numbers)
+            {
+                int count;
+                counts.TryGetValue(number, out count);
+                count++;
+                counts[number] = count;
+            }
+            int mostCommonNumber = 0, occurrences = 0;
+            foreach (var pair in counts)
+            {
+                if (pair.Value > occurrences)
+                {
+                    occurrences = pair.Value;
+                    mostCommonNumber = pair.Key;
+                }
+            }
+            return mostCommonNumber;
+        }
+
     }
 }
